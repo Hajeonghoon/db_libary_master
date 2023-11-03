@@ -1,0 +1,20 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<form action="/reviews/create" method="post">
+  <input type="hidden" name="bookId" value="{{bookId}}" />
+  평점: <input type="number" min="1" max="5" name="rate" />
+  <br />
+  리뷰: <textarea name="contents" cols="30" rows="5"></textarea><br>
+  <button>작성</button>
+</form>
+
+<div id="reviewList">
+  {% for review in reviews %}
+    <div>{{review.userId}} | {{review.rate}} | {{review.contents}}</div>
+  {% endfor %}
+</div>
+{% endblock %}
+
+{% block script %}
+{% endblock %}
